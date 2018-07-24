@@ -37,12 +37,12 @@ class ApplicationController < Sinatra::Base
     erb :edit
   end
 
-  post '/recipes' do  #creates a recipe
+  post '/recipes' do
     @recipe = Recipe.create(params)
     redirect to "/recipes/#{@recipe.id}"
   end
 
-  delete '/recipes/:id/delete' do #delete action
+  delete '/recipes/:id/delete' do
     @recipe = Recipe.find(params[:id])
     Recipe.destroy(@recipe.id)
     redirect to '/recipes'
