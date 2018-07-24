@@ -1,3 +1,4 @@
+require 'pry'
 class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
@@ -26,6 +27,7 @@ class ApplicationController < Sinatra::Base
   patch '/recipes/:id' do
     @recipe = Recipe.find(params[:id])
     @recipe.update(:ingredients => params[:ingredients], :name => params[:name], :cook_time => params[:cook_time])
+    binding.pry
     redirect to "/recipes/#{@recipe.id}"
   end
 
